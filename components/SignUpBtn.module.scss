@@ -1,0 +1,13 @@
+@import '../variables.module.scss';
+.sign-up--btn{
+    display: block;
+    width: 50%;
+    padding: .3rem 1.3rem;
+    justify-self: center;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    border: 1px solid #2a2929;
+    font-family: $primary-font;
+    font-size: 1.3rem;
+
+}
