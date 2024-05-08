@@ -1,6 +1,7 @@
 // const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
+const signUpRouter = require('./routes/signUp');
 
 const app = express();
 
@@ -19,12 +20,8 @@ app.use((req, res, next) => {
 	);
 	next();
 });
-app.use('/signUp', (req, res, next) => {
-	console.log(req.body);
 
-	res.send({ data: 'DATA' });
-});
-
+app.use(signUpRouter);
 app.use('/', (req, res, next) => {
 	console.log('Hello From sign up main middleware!');
 });
