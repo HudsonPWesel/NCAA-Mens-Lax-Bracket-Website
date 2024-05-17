@@ -2,6 +2,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const signUpRouter = require('./routes/signUp');
+const profileRouter = require('./routes/profile');
 
 const app = express();
 
@@ -22,8 +23,12 @@ app.use((req, res, next) => {
 });
 
 app.use(signUpRouter);
+app.use(profileRouter);
+
 app.use('/', (req, res, next) => {
 	console.log('Hello From sign up main middleware!');
 });
+
+
 // Middlewware
 app.listen(3001);
