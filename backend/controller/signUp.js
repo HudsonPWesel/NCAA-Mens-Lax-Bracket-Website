@@ -1,8 +1,9 @@
 const User = require('../model/User');
 
 exports.postCreateUser = (req, res, next) => {
-	const { fname, lname, email } = req.body;
-	const newUser = new User(fname, lname, email);
+	const { firstName, lastName, email } = req.body;
+	const newUser = new User(firstName, lastName, email);
 	console.log(req.body);
+	console.log(newUser);
 	res.send({ data: newUser });
 };

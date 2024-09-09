@@ -26,9 +26,8 @@ app.use(signUpRouter);
 app.use(profileRouter);
 
 app.use('/', (req, res, next) => {
-	console.log('Hello From sign up main middleware!');
+	// console.log('Hello From sign up main middleware!');
 });
-
 
 // Middlewware
 app.listen(3001);
