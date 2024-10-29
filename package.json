@@ -3,7 +3,8 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "start": "next start"
+    "start": "next start",
+    "start-server":"nodemon server.js"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
