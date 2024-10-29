@@ -1,21 +1,17 @@
 const http = require('http');
+const express = require('express');
 
-const server = http.createServer((req, res) => {
-	res.write('<html>');
-	res.write('<head><title>Enter Message</title><head>');
-	res.write(
-		'<body><form action="/message" method="post"><input type="text" name="message"></input></form></body>'
-	);
-	res.write('<html>');
-	const data = [];
-	req.on('data', chunk => {
-		console.log(chunk);
-		data.push(chunk);
-	});
-	req.on('end', () => {
-		const parsedBody = Buffer.concat(data).toString();
-		console.log(parsedBody);
-	});
-	res.end();
+const app = express();
+
+app.use((req, res, next) => {
+	console.log('Hello from middlware');
+	next();
 });
+
+app.use((req, res, next) => {
+	console.log('Hello from another middlware');
+});
+
+const server = http.createServer(app);
+
 server.listen(3000);
