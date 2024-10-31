@@ -1,21 +1,31 @@
-const http = require('http');
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use((req, res, next) => {
-	console.log('Hello from middlware');
-	next();
+// Body parsing middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Route to show the form
+app.get('/add-product', (req, res) => {
+	res.send(
+		'<form action="/product" method="POST">' +
+			'<input type="text" name="title">' + // Added name attribute
+			'<input type="submit">' +
+			'</form>'
+	);
 });
 
-app.use((req, res, next) => {
-	console.log('Hello from another middlware');
+// Route to handle form submission
+app.post('/product', (req, res) => {
+	console.log(req.body); // This should now log the form data
+	console.log(req.body.title); // Log the title specifically
 
-	// Sets properties of request for us and ensures we don't have a hanging request
-	res.send('Hello from express!');
+	// Send a response back
+	res.send('Product received: ' + req.body.title);
 });
 
-// const server = http.createServer(app);
-// server.listen(3000);
-
-app.listen(3000);
+app.listen(3000, () => {
+	console.log('Server running on port 3000');
+});
